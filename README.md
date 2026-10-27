@@ -40,15 +40,14 @@ Built with Python and Streamlit, the application provides an interactive dashboa
 
 ```mermaid
 flowchart TD
-    A[Server Fleet] --> B[Node Exporter]
-    B --> C[Prometheus]
-    C --> D[Prometheus HTTP API]
-    D --> E[Zombie Server Hunter]
-    E --> F[Detection Engine]
-    E --> G[Savings Calculator]
-    F --> H[Interactive Dashboard]
-    G --> H
-    H --> I[CSV Reports]
+    A["Prometheus Server"] --> B["Zombie Server Hunter"]
+    C["Node Exporter"] --> A
+    B --> D["Fetch Metrics"]
+    D --> E["Analyze CPU and Memory"]
+    E --> F["Identify Potentially Idle Servers"]
+    F --> G["Estimate Cost and CO2 Savings"]
+    G --> H["Streamlit Dashboard"]
+    H --> I["CSV Report"]
 ```
 
 ### How It Works
