@@ -245,14 +245,32 @@ with st.expander("Why was a server flagged?", expanded=True):
             st.markdown(f"**{row['instance']} — {row['status']}**\n\n{row['reason']}")
 
 st.subheader("Operational safety checklist")
-st.markdown("""
-- [ ] Confirm the service owner and business purpose.
-- [ ] Check scheduled jobs, month-end/batch workloads and seasonal traffic.
-- [ ] Verify redundancy, failover, disaster-recovery and compliance requirements.
-- [ ] Review application dependencies, alerts, logs and deployment configuration.
-- [ ] Validate power assumptions against measured server or rack power where possible.
-- [ ] Test in staging and use an approved change window; do not automate shutdown from this report.
-""")
+st.caption(
+    "Complete these checks before recommending any server shutdown. "
+    "Selections are saved for the current app session only."
+)
+
+safety_checks = [
+    "Confirm the service owner and business purpose.",
+    "Check scheduled jobs, month-end/batch workloads and seasonal traffic.",
+    "Verify redundancy, failover, disaster recovery and compliance requirements.",
+    "Review application dependencies, alerts, logs and deployment configuration.",
+    "Validate power assumptions against measured server or rack power where possible.",
+    "Test in staging and use an approved change window; never automate shutdown from this report.",
+]
+
+completed_checks = 0
+for check_index, check_label in enumerate(safety_checks):
+    if st.checkbox(check_label, key=f"safety_check_{check_index}"):
+        completed_checks += 1
+
+st.progress(completed_checks / len(safety_checks))
+st.caption(f"{completed_checks} of {len(safety_checks)} checks completed.")
+
+if completed_checks == len(safety_checks):
+    st.success("All safety checks completed for this session.")
+else:
+    st.info("Complete the remaining checks before proceeding.")
 
 report = results.copy()
 report["analysis_window_hours"] = int(window_hours)
