@@ -2,6 +2,14 @@
 
 **Prometheus-Powered Infrastructure Efficiency & Energy Optimization**
 
+## 🚀 Live Demo
+
+**[Open Zombie Server Hunter](https://zombie-server-hunter.streamlit.app)**
+
+Explore the deployed dashboard in your browser. Demo mode uses illustrative synthetic data; live Prometheus mode requires a Prometheus endpoint reachable by the app.
+
+---
+
 Zombie Server Hunter is a free, open-source monitoring application that analyzes Prometheus metrics to identify potentially underutilized servers and estimate their monthly energy consumption, electricity costs, and carbon emissions.
 
 Built with Python and Streamlit, the application provides an interactive dashboard for infrastructure analysis, configurable detection rules, and data-driven optimization opportunities.
@@ -93,7 +101,7 @@ zombie-server-hunter/
 Replace `YOUR_USERNAME` with your GitHub username.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/zombie-server-hunter.git
+git clone https://github.com/Abhi5hekkumar/zombie-server-hunter.git
 cd zombie-server-hunter
 ```
 
